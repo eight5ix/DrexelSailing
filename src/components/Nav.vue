@@ -38,6 +38,7 @@
             </v-list-tile>
         </v-list>
     </v-navigation-drawer>
+    <button type="button" name="button" @click="login()">Google</button>
  <v-dialog v-model="dialog" width="50%">
     <v-card>
         <v-card-title
@@ -71,7 +72,7 @@
           <v-btn
             color="primary"
             flat
-            @click="dialog = false"
+
           >
             Sign Up
           </v-btn>
@@ -85,6 +86,8 @@
 
 <script>
 
+import { mapActions } from 'vuex';
+
 export default {
   data () {
     return {
@@ -94,10 +97,11 @@ export default {
     }
   },
 
-  computed: {
-    links () { // located in store.js
-      return this.$store.state.links
-    }
-  }
+  // computed: {
+  //   links () { // located in store.js
+  //     return this.$store.state.links
+  //   }
+  // },
+  methods: mapActions('auth', ['login'])
 }
 </script>
