@@ -38,7 +38,6 @@
             </v-list-tile>
         </v-list>
     </v-navigation-drawer>
-    <button type="button" name="button" @click="login()">Google</button>
  <v-dialog v-model="dialog" width="50%">
     <v-card>
         <v-card-title
@@ -63,6 +62,13 @@
                 placeholder="password"
                 required
               ></v-text-field>
+              <v-btn
+                color="primary"
+                flat
+                @click="login()"
+              >
+              Google
+            </v-btn>
         </v-card>
 
         <v-divider></v-divider>

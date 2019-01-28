@@ -1,24 +1,4 @@
-// import firebase from '@/firebase'
-//
-// const state = {
-//   user: {},
-//   isLoggedIn = false
-// };
-//
-// const actions = {
-//   async login({context}){
-//     const provider = new firebase.auth.GoogleAuthProvider();
-//     const result = await firebase.auth().signInWithPopup(provider);
-//     console.log(result.user);
-//   }
-// }
-//
-// export default {
-//   namespaced: true,
-//   state,
-//   mutations,
-//   actions,
-// };
+
 import firebase from '@/firebase';
 
 const state = {
@@ -39,10 +19,16 @@ const state = {
 // };
 
 const actions = {
-  async login() {
+  async login({_, commit}) {
     const provider = new firebase.auth.GoogleAuthProvider();
-    const result = await firebase.auth().signInWithPopup(provider);
-    console.log(result.user);
+    const profile = await firebase.auth().signInWithPopup(provider);
+    commit('setUser', {
+      id: profile.uid,
+      name: profile.displayName,
+      image: profile.photoURL,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+
+    })
   }
   // async logout() {
   //   await firebase.auth().signOut();
