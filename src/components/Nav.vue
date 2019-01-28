@@ -25,6 +25,30 @@
                 <span>Sign Up</span>
                 <v-icon right>exit_to_app</v-icon>
             </v-btn>
+            <v-menu offset-y>
+            <v-btn
+              slot="activator"
+              dark
+              icon
+            >
+              <v-avatar
+                :tile="tile"
+                :size="avatarSize"
+                color="grey lighten-4"
+              >
+                <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+              </v-avatar>
+            </v-btn>
+
+            <v-list>
+              <v-list-tile
+                @click=""
+                class="red--text"
+              >
+                <v-list-tile-title>Log Out</v-list-tile-title>
+              </v-list-tile>
+            </v-list>
+          </v-menu>
     </v-toolbar>
     <v-navigation-drawer app class="primary hidden-md-and-up" v-model="drawer">
         <v-list>
@@ -96,6 +120,7 @@ import { mapActions } from 'vuex';
 
 export default {
   data () {
+    
     return {
       drawer: false,
       dialog: false
