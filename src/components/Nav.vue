@@ -78,7 +78,6 @@
           <v-btn
             color="primary"
             flat
-
           >
             Sign Up
           </v-btn>

@@ -6,7 +6,6 @@
             <v-btn class="secondary primary--text font-weight-black" large>Join the Team</v-btn>
     </v-flex>
     </v-parallax>
-    <button type="button" name="button" @click="login()">Google</button>
     <v-layout row wrap>
     <v-card class="ma-4" color="transparent" elevation="0" max-width="500">
         <h1 class="display-3 font-weight-heavy text-md-left grey--text pb-2">What We're About</h1>
@@ -24,13 +23,11 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 export default {
   data () {
     return {
 
     }
-  },
-  methods: mapActions('auth', ['login'])
+  }
 }
 </script>
