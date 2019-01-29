@@ -21,7 +21,7 @@
                 </v-btn>
             </v-toolbar-items>
 
-            <v-btn flat color="secondary" @click="dialog = !dialog">
+            <v-btn flat color="secondary" @click="dialog = !dialog" v-show="!isLoggedIn">
                 <span>Sign Up</span>
                 <v-icon right>exit_to_app</v-icon>
             </v-btn>
@@ -40,17 +40,17 @@
               </v-avatar>
             </v-btn>
 
-            <v-list>
+            <v-list v-show="isLoggedIn">
               <v-list-tile
                 @click=""
                 class="red--text"
               >
-                <v-list-tile-title>Log Out</v-list-tile-title>
+                <v-list-tile-title @click="logout()" >Log Out</v-list-tile-title>
               </v-list-tile>
             </v-list>
           </v-menu>
     </v-toolbar>
-    <v-navigation-drawer app class="primary hidden-md-and-up" v-model="drawer">
+    <v-navigation-drawer app class="primary hidden-md-and-up" v-model="drawer" disable-resize-watcher>
         <v-list>
             <v-list-tile v-for="link in links" :key="link.text" router :to="link.route">
                 <v-list-tile-action>
@@ -63,7 +63,7 @@
         </v-list>
     </v-navigation-drawer>
  <v-dialog v-model="dialog" width="50%">
-    <v-card>
+    <v-card >
         <v-card-title
           class="headline grey lighten-2"
           primary-title
@@ -115,11 +115,11 @@
 
 <script>
 
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   data () {
-    
+
     return {
       drawer: false,
       dialog: false
@@ -132,6 +132,7 @@ export default {
   //     return this.$store.state.links
   //   }
   // },
-  methods: mapActions('auth', ['login'])
+  computed: mapState('auth', ['user', 'isLoggedIn']),
+  methods: mapActions('auth', ['login', 'logout'])
 }
 </script>

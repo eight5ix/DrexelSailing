@@ -1,5 +1,4 @@
 import firebase from '@/firebase';
-import db from '@/db'
 
 const state = {
   user: {},
@@ -19,21 +18,13 @@ const mutations = {
 };
 
 const actions = {
-  async login({ commit }) {
+  async login() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    const { user } = await firebase.auth().signInWithPopup(provider);
-    const setUser = {
-      id: user.uid,
-      name: user.displayName,
-      image: user.photoURL,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp()
-    };
-    db.collection('users').doc(setUser.id).set(setUser);
-    commit('setUser', setUser);
-  // async logout() {
-  //   await firebase.auth().signOut();
-  // },
-}
+    await firebase.auth().signInWithPopup(provider);
+  },
+  async logout() {
+    await firebase.auth().signOut();
+  },
 };
 
 export default {

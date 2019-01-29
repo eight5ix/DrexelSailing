@@ -2,6 +2,7 @@ import Vue from 'vue'
 import './plugins/vuetify'
 
 import firebase from './firebase'
+import auth from './auth'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Routes from './routes.js'
