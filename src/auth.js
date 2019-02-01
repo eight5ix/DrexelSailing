@@ -16,9 +16,10 @@ firebase.auth().onAuthStateChanged((user) => {
       image: user.photoURL,
       created_at: firebase.firestore.FieldValue.serverTimestamp(),
     };
+    console.log(user);
     db.collection('users').doc(setUser.id).set(setUser);
     store.commit('auth/setUser', setUser);
-    router.push('/subreddits');
+    // router.push('/subreddits');
   } else {
     store.commit('auth/setUser', null);
   }

@@ -102,6 +102,7 @@
           <v-btn
             color="primary"
             flat
+            @click="loginWithPassword({email: email, password: password})"
           >
             Sign Up
           </v-btn>
@@ -122,7 +123,10 @@ export default {
 
     return {
       drawer: false,
-      dialog: false
+      dialog: false,
+      email: '',
+      password: ''
+
 
     }
   },
@@ -133,6 +137,7 @@ export default {
   //   }
   // },
   computed: mapState('auth', ['user', 'isLoggedIn']),
-  methods: mapActions('auth', ['login', 'logout'])
+  methods:  mapActions('auth', ['login', 'logout', 'loginWithPassword']),
+
 }
 </script>

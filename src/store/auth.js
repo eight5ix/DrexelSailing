@@ -18,6 +18,7 @@ const mutations = {
 };
 
 const actions = {
+  // Login With Google
   async login() {
     const provider = new firebase.auth.GoogleAuthProvider();
     await firebase.auth().signInWithPopup(provider);
@@ -25,6 +26,20 @@ const actions = {
   async logout() {
     await firebase.auth().signOut();
   },
+  async loginWithPassword ({commit}, { email, password }){
+    await firebase.auth().createUserWithEmailAndPassword(email, password);
+    // {
+  //     user => {
+  //           const newUser = {
+  //             id: user.uid,
+  //           }
+  //           commit('setUser', newUser)
+  //         }
+  //       )
+  //   }
+  // },
+
+}
 };
 
 export default {
